@@ -2,11 +2,11 @@ const getImgUrls = async (ctx, next) => {
   ctx.body = {
     success: true,
     imgUrls: [
-      'http://img2.imgtn.bdimg.com/it/u=2632735523,2282611807&fm=11&gp=0.jpg',
-      'http://img2.imgtn.bdimg.com/it/u=2632735523,2282611807&fm=11&gp=0.jpg',
-      'http://img2.imgtn.bdimg.com/it/u=2632735523,2282611807&fm=11&gp=0.jpg',
-      'http://img2.imgtn.bdimg.com/it/u=2632735523,2282611807&fm=11&gp=0.jpg',
-      'http://img2.imgtn.bdimg.com/it/u=2632735523,2282611807&fm=11&gp=0.jpg',
+      'http://img0.imgtn.bdimg.com/it/u=3244155085,4294011821&fm=27&gp=0.jpg',
+      'http://img0.imgtn.bdimg.com/it/u=3244155085,4294011821&fm=27&gp=0.jpg',
+      'http://img0.imgtn.bdimg.com/it/u=3244155085,4294011821&fm=27&gp=0.jpg',
+      'http://img0.imgtn.bdimg.com/it/u=3244155085,4294011821&fm=27&gp=0.jpg',
+      'http://img0.imgtn.bdimg.com/it/u=3244155085,4294011821&fm=27&gp=0.jpg',
     ]
   }
   await next()
