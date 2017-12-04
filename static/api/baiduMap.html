@@ -7,7 +7,7 @@
     <title>高德地图 - DIY我的地图</title>
     <style>
         body { margin: 0; font: 13px/1.5 "Microsoft YaHei", "Helvetica Neue", "Sans-Serif"; min-height: 960px; min-width: 600px; }
-        .my-map { margin: 0 auto; width: 500px; height: 300px; }
+        .my-map { margin: 0 auto; width: 1000px; height: 300px; }
         .my-map .icon { background: url(http://lbs.amap.com/console/public/show/marker.png) no-repeat; }
         .my-map .icon-cir { height: 31px; width: 28px; }
         .my-map .icon-cir-red { background-position: -11px -5px; }
@@ -21,9 +21,9 @@
 <script src="//webapi.amap.com/maps?v=1.3&key=8325164e247e15eea68b59e89200988b"></script>
 <script>
   !function(){
-    var infoWindow, map, level = 18,
-      center = {lng: 116.525626, lat: 39.924693},
-      features = [{type: "Marker", name: "北京世纪星瀚文化发展有限公司", desc: "", color: "red", icon: "cir", offset: {x: -9, y: -31}, lnglat: {lng: 116.525626, lat: 39.924307}}];
+    var infoWindow, map, level = 17,
+      center = {lng: 116.528431, lat: 39.924578},
+      features = [{type: "Marker", name: "北京世纪星瀚文化发展有限公司", desc: "北京市朝阳区朝阳北路雅城一里甲三号 邮政编码：100123", color: "red", icon: "cir", offset: {x: -9, y: -31}, lnglat: {lng: 116.525706, lat: 39.924537}}];
 
     function loadFeatures(){
       for(var feature, data, i = 0, len = features.length, j, jl, path; i < len; i++){
@@ -63,18 +63,8 @@
     }
 
     map = new AMap.Map("mapContainer", {center: new AMap.LngLat(center.lng, center.lat), level: level});
-
-    loadFeatures();
-
-    map.on('complete', function(){
-      map.plugin(["AMap.ToolBar", "AMap.OverView", "AMap.Scale"], function(){
-        map.addControl(new AMap.ToolBar);
-        map.addControl(new AMap.OverView({isOpen: true}));
-        map.addControl(new AMap.Scale);
-      });
-    })
-
-  }();
+    new AMap.TileLayer.RoadNet({map: map, zIndex: 2});
+    loadFeatures();	}();
 </script>
 </body>
 </html>
