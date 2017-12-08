@@ -6,12 +6,39 @@
     <meta name="description" content="高德地图，DIY地图，自己制作地图，生成自己的高德地图">
     <title>高德地图 - DIY我的地图</title>
     <style>
-        body { margin: 0; font: 13px/1.5 "Microsoft YaHei", "Helvetica Neue", "Sans-Serif"; min-height: 960px; min-width: 600px; }
-        .my-map { margin: 0 auto; width: 1000px; height: 300px; }
-        .my-map .icon { background: url(http://lbs.amap.com/console/public/show/marker.png) no-repeat; }
-        .my-map .icon-cir { height: 31px; width: 28px; }
-        .my-map .icon-cir-red { background-position: -11px -5px; }
-        .amap-container{height: 100%;}
+        body {
+            margin: 0;
+            font: 13px/1.5 "Microsoft YaHei", "Helvetica Neue", "Sans-Serif";
+            min-height: 960px;
+            min-width: 600px;
+        }
+
+        .my-map {
+            margin: 0 auto;
+            width: 1000px;
+            height: 300px;
+        }
+
+        .my-map .icon {
+            background: url(http://lbs.amap.com/console/public/show/marker.png) no-repeat;
+        }
+
+        .my-map .icon-cir {
+            height: 31px;
+            width: 28px;
+        }
+
+        .my-map .icon-cir-red {
+            background-position: -11px -5px;
+        }
+
+        .amap-container {
+            height: 100%;
+        }
+
+        body {
+            overflow: hidden;
+        }
     </style>
 </head>
 <body>
@@ -20,51 +47,86 @@
 </div>
 <script src="//webapi.amap.com/maps?v=1.3&key=8325164e247e15eea68b59e89200988b"></script>
 <script>
-  !function(){
-    var infoWindow, map, level = 17,
-      center = {lng: 116.528431, lat: 39.924578},
-      features = [{type: "Marker", name: "北京世纪星瀚文化发展有限公司", desc: "北京市朝阳区朝阳北路雅城一里甲三号 邮政编码：100123", color: "red", icon: "cir", offset: {x: -9, y: -31}, lnglat: {lng: 116.525706, lat: 39.924537}}];
+    !function () {
+        var infoWindow, map, level = 17,
+            center = {lng: 116.528431, lat: 39.924578},
+            features = [{
+                type: "Marker",
+                name: "北京世纪星瀚文化发展有限公司",
+                desc: "北京市朝阳区朝阳北路雅城一里甲三号 邮政编码：100123",
+                color: "red",
+                icon: "cir",
+                offset: {x: -9, y: -31},
+                lnglat: {lng: 116.525706, lat: 39.924537}
+            }];
 
-    function loadFeatures(){
-      for(var feature, data, i = 0, len = features.length, j, jl, path; i < len; i++){
-        data = features[i];
-        switch(data.type){
-          case "Marker":
-            feature = new AMap.Marker({ map: map, position: new AMap.LngLat(data.lnglat.lng, data.lnglat.lat),
-              zIndex: 3, extData: data, offset: new AMap.Pixel(data.offset.x, data.offset.y), title: data.name,
-              content: '<div class="icon icon-' + data.icon + ' icon-'+ data.icon +'-' + data.color +'"></div>' });
-            break;
-          case "Polyline":
-            for(j = 0, jl = data.lnglat.length, path = []; j < jl; j++){
-              path.push(new AMap.LngLat(data.lnglat[j].lng, data.lnglat[j].lat));
+        function loadFeatures() {
+            for (var feature, data, i = 0, len = features.length, j, jl, path; i < len; i++) {
+                data = features[i];
+                switch (data.type) {
+                    case "Marker":
+                        feature = new AMap.Marker({
+                            map: map,
+                            position: new AMap.LngLat(data.lnglat.lng, data.lnglat.lat),
+                            zIndex: 3,
+                            extData: data,
+                            offset: new AMap.Pixel(data.offset.x, data.offset.y),
+                            title: data.name,
+                            content: '<div class="icon icon-' + data.icon + ' icon-' + data.icon + '-' + data.color + '"></div>'
+                        });
+                        break;
+                    case "Polyline":
+                        for (j = 0, jl = data.lnglat.length, path = []; j < jl; j++) {
+                            path.push(new AMap.LngLat(data.lnglat[j].lng, data.lnglat[j].lat));
+                        }
+                        feature = new AMap.Polyline({
+                            map: map,
+                            path: path,
+                            extData: data,
+                            zIndex: 2,
+                            strokeWeight: data.strokeWeight,
+                            strokeColor: data.strokeColor,
+                            strokeOpacity: data.strokeOpacity
+                        });
+                        break;
+                    case "Polygon":
+                        for (j = 0, jl = data.lnglat.length, path = []; j < jl; j++) {
+                            path.push(new AMap.LngLat(data.lnglat[j].lng, data.lnglat[j].lat));
+                        }
+                        feature = new AMap.Polygon({
+                            map: map,
+                            path: path,
+                            extData: data,
+                            zIndex: 1,
+                            strokeWeight: data.strokeWeight,
+                            strokeColor: data.strokeColor,
+                            strokeOpacity: data.strokeOpacity,
+                            fillColor: data.fillColor,
+                            fillOpacity: data.fillOpacity
+                        });
+                        break;
+                    default:
+                        feature = null;
+                }
+                if (feature) {
+                    AMap.event.addListener(feature, "click", mapFeatureClick);
+                }
             }
-            feature = new AMap.Polyline({ map: map, path: path, extData: data, zIndex: 2,
-              strokeWeight: data.strokeWeight, strokeColor: data.strokeColor, strokeOpacity: data.strokeOpacity });
-            break;
-          case "Polygon":
-            for(j = 0, jl = data.lnglat.length, path = []; j < jl; j++){
-              path.push(new AMap.LngLat(data.lnglat[j].lng, data.lnglat[j].lat));
-            }
-            feature = new AMap.Polygon({ map: map, path: path, extData: data, zIndex: 1,
-              strokeWeight: data.strokeWeight, strokeColor: data.strokeColor, strokeOpacity: data.strokeOpacity,
-              fillColor: data.fillColor, fillOpacity: data.fillOpacity });
-            break;
-          default: feature = null;
         }
-        if(feature){ AMap.event.addListener(feature, "click", mapFeatureClick); }
-      }
-    }
 
-    function mapFeatureClick(e){
-      if(!infoWindow){ infoWindow = new AMap.InfoWindow({autoMove: true}); }
-      var extData = e.target.getExtData();
-      infoWindow.setContent("<h5>" + extData.name + "</h5><div>" + extData.desc + "</div>");
-      infoWindow.open(map, e.lnglat);
-    }
+        function mapFeatureClick(e) {
+            if (!infoWindow) {
+                infoWindow = new AMap.InfoWindow({autoMove: true});
+            }
+            var extData = e.target.getExtData();
+            infoWindow.setContent("<h5>" + extData.name + "</h5><div>" + extData.desc + "</div>");
+            infoWindow.open(map, e.lnglat);
+        }
 
-    map = new AMap.Map("mapContainer", {center: new AMap.LngLat(center.lng, center.lat), level: level});
-    new AMap.TileLayer.RoadNet({map: map, zIndex: 2});
-    loadFeatures();	}();
+        map = new AMap.Map("mapContainer", {center: new AMap.LngLat(center.lng, center.lat), level: level});
+        new AMap.TileLayer.RoadNet({map: map, zIndex: 2});
+        loadFeatures();
+    }();
 </script>
 </body>
 </html>
