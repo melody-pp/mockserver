@@ -40,141 +40,20 @@ const getContact = async (ctx, next) => {
   ]
 }
 
-const getCases = async (ctx, next) => {
-  ctx.body = {
-    success: true,
-    cases: [
-      {
-        imgUrl: 'http://m.360buyimg.com/n12/jfs/t1366/185/1280412881/108117/b37ebbb5/55c31ec7Nd9db92ac.jpg%21q70.jpg',
-        title: 'title',
-        time: '2017-11-11',
-        id: 1,
-        width: 300,
-        height: Math.random() * 200 + 200,
-        type: 'she'
-      },
-      {
-        imgUrl: 'http://m.360buyimg.com/n12/jfs/t1366/185/1280412881/108117/b37ebbb5/55c31ec7Nd9db92ac.jpg%21q70.jpg',
-        title: 'title',
-        time: '2017-11-11',
-        id: 1,
-        width: 300,
-        height: Math.random() * 200 + 200
-      },
-      {
-        imgUrl: 'http://m.360buyimg.com/n12/jfs/t1366/185/1280412881/108117/b37ebbb5/55c31ec7Nd9db92ac.jpg%21q70.jpg',
-        title: 'title',
-        time: '2017-11-11',
-        id: 1,
-        width: 300,
-        height: Math.random() * 200 + 200
-      },
-      {
-        imgUrl: 'http://m.360buyimg.com/n12/jfs/t1366/185/1280412881/108117/b37ebbb5/55c31ec7Nd9db92ac.jpg%21q70.jpg',
-        title: 'title',
-        time: '2017-11-11',
-        id: 1,
-        width: 300,
-        height: Math.random() * 200 + 200
-      },
-      {
-        imgUrl: 'http://m.360buyimg.com/n12/jfs/t1366/185/1280412881/108117/b37ebbb5/55c31ec7Nd9db92ac.jpg%21q70.jpg',
-        title: 'title',
-        time: '2017-11-11',
-        id: 1,
-        width: 300,
-        height: Math.random() * 200 + 200
-      },
-      {
-        imgUrl: 'http://m.360buyimg.com/n12/jfs/t1366/185/1280412881/108117/b37ebbb5/55c31ec7Nd9db92ac.jpg%21q70.jpg',
-        title: 'title',
-        time: '2017-11-11',
-        id: 1,
-        width: 300,
-        height: Math.random() * 200 + 200
-      },
-      {
-        imgUrl: 'http://m.360buyimg.com/n12/jfs/t1366/185/1280412881/108117/b37ebbb5/55c31ec7Nd9db92ac.jpg%21q70.jpg',
-        title: 'title',
-        time: '2017-11-11',
-        id: 1,
-        width: 300,
-        height: Math.random() * 200 + 200
-      },
-      {
-        imgUrl: 'http://m.360buyimg.com/n12/jfs/t1366/185/1280412881/108117/b37ebbb5/55c31ec7Nd9db92ac.jpg%21q70.jpg',
-        title: 'title',
-        time: '2017-11-11',
-        id: 1,
-        width: 300,
-        height: Math.random() * 200 + 200
-      },
-      {
-        imgUrl: 'http://m.360buyimg.com/n12/jfs/t1366/185/1280412881/108117/b37ebbb5/55c31ec7Nd9db92ac.jpg%21q70.jpg',
-        title: 'title',
-        time: '2017-11-11',
-        id: 1,
-        width: 300,
-        height: Math.random() * 200 + 200
-      },
-      {
-        imgUrl: 'http://m.360buyimg.com/n12/jfs/t1366/185/1280412881/108117/b37ebbb5/55c31ec7Nd9db92ac.jpg%21q70.jpg',
-        title: 'title',
-        time: '2017-11-11',
-        id: 1,
-        width: 300,
-        height: Math.random() * 200 + 200
-      },
-      {
-        imgUrl: 'http://m.360buyimg.com/n12/jfs/t1366/185/1280412881/108117/b37ebbb5/55c31ec7Nd9db92ac.jpg%21q70.jpg',
-        title: 'title',
-        time: '2017-11-11',
-        id: 1,
-        width: 300,
-        height: Math.random() * 200 + 200
-      },
-      {
-        imgUrl: 'http://m.360buyimg.com/n12/jfs/t1366/185/1280412881/108117/b37ebbb5/55c31ec7Nd9db92ac.jpg%21q70.jpg',
-        title: 'title',
-        time: '2017-11-11',
-        id: 1,
-        width: 300,
-        height: Math.random() * 200 + 200
-      },
-      {
-        imgUrl: 'http://m.360buyimg.com/n12/jfs/t1366/185/1280412881/108117/b37ebbb5/55c31ec7Nd9db92ac.jpg%21q70.jpg',
-        title: 'title',
-        time: '2017-11-11',
-        id: 1,
-        width: 300,
-        height: Math.random() * 200 + 200
-      },
-      {
-        imgUrl: 'http://m.360buyimg.com/n12/jfs/t1366/185/1280412881/108117/b37ebbb5/55c31ec7Nd9db92ac.jpg%21q70.jpg',
-        title: 'title',
-        time: '2017-11-11',
-        id: 1,
-        width: 300,
-        height: Math.random() * 200 + 200
-      },
-      {
-        imgUrl: 'http://m.360buyimg.com/n12/jfs/t1366/185/1280412881/108117/b37ebbb5/55c31ec7Nd9db92ac.jpg%21q70.jpg',
-        title: 'title',
-        time: '2017-11-11',
-        id: 1,
-        width: 300,
-        height: Math.random() * 200 + 200
-      },
-      {
-        imgUrl: 'http://m.360buyimg.com/n12/jfs/t1366/185/1280412881/108117/b37ebbb5/55c31ec7Nd9db92ac.jpg%21q70.jpg',
-        title: 'title',
-        time: '2017-11-11',
-        id: 1,
-        width: 300,
-        height: Math.random() * 200 + 200
-      },
-    ]
-  }
+const getCaseintro = async (ctx, next) => {
+  ctx.body = [
+    { surface:'http://e.hiphotos.baidu.com/image/pic/item/ca1349540923dd5432c4a7a2d809b3de9d824840.jpg',ctitle:'1243',created_at:'2011-11-11'},
+    { surface:'http://pic2.ooopic.com/12/22/94/30b1OOOPIC5c.jpg',ctitle:'1243',created_at:'2011-11-11'},
+    { surface:'http://e.hiphotos.baidu.com/image/pic/item/ca1349540923dd5432c4a7a2d809b3de9d824840.jpg',ctitle:'1243',created_at:'2011-11-11'},
+    { surface:'http://pic2.ooopic.com/12/22/94/30b1OOOPIC5c.jpg',ctitle:'1243',created_at:'2011-11-11'},
+    { surface:'http://e.hiphotos.baidu.com/image/pic/item/ca1349540923dd5432c4a7a2d809b3de9d824840.jpg',ctitle:'1243',created_at:'2011-11-11'},
+    { surface:'http://pic2.ooopic.com/12/22/94/30b1OOOPIC5c.jpg',ctitle:'1243',created_at:'2011-11-11'},
+    { surface:'http://e.hiphotos.baidu.com/image/pic/item/ca1349540923dd5432c4a7a2d809b3de9d824840.jpg',ctitle:'1243',created_at:'2011-11-11'},
+    { surface:'http://pic2.ooopic.com/12/22/94/30b1OOOPIC5c.jpg',ctitle:'1243',created_at:'2011-11-11'},
+    { surface:'http://e.hiphotos.baidu.com/image/pic/item/ca1349540923dd5432c4a7a2d809b3de9d824840.jpg',ctitle:'1243',created_at:'2011-11-11'},
+    { surface:'http://pic2.ooopic.com/12/22/94/30b1OOOPIC5c.jpg',ctitle:'1243',created_at:'2011-11-11'},
+
+  ]
 }
 
-module.exports = {getImgUrls, getKeywords, getContact, getCases}
+module.exports = {getImgUrls, getKeywords, getContact, getCaseintro}
